@@ -1,0 +1,6 @@
+ID,name,criticality
+1,Available,4
+2,Taken,3
+3,Repair,2
+4,Maintenance,1
+5,Conservated,0
