@@ -14,18 +14,18 @@ entity Booking : managed {
         beginTime     : Time;
         endDate       : Date;
         endTime       : Time;
+        image : LargeBinary @Core.MediaType : 'image/png';
 }
 
 entity Authors : managed {
     key authorUUID : UUID;
-    key authorID   : String(15);
-        firstName  : String(15);
-        lastName   : String(15);
+        authorID   : String(15);
+        firstName  : localized String(15);
+        lastName   : localized String(15);
         birthday   : Date;
         country    : String(30);
-        @cascade : {all}
-        book       : Composition of many Books
-                         on book.toAuthor = $self;
+        image : LargeBinary @Core.MediaType : 'image/png';
+        book       : Association to many Books on book.toAuthor = $self;
 };
 
 entity Books : managed {

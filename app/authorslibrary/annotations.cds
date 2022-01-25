@@ -1,23 +1,23 @@
 using LibraryService as service from '../../srv/services';
 
-annotate service. with @(
+annotate service.Authors with @(
      UI: {
- SelectionFields: [readerBithday],
+ SelectionFields: [birthday],
  LineItem: [
-     { $Type : 'UI.DataField', Value : readerID, ![@UI.Importance]: #High },
+     { $Type : 'UI.DataField', Value : authorID, ![@UI.Importance]: #High },
      { $Type : 'UI.DataField', Value: firstName, ![@UI.Importance]: #High },  
      { $Type : 'UI.DataField', Value: lastName, ![@UI.Importance]: #High },
-     { $Type : 'UI.DataField', Value: readerBithday, ![@UI.Importance]: #High },
-     { $Type : 'UI.DataField', Value: phonenumber, ![@UI.Importance]: #High }
+     { $Type : 'UI.DataField', Value: birthday, ![@UI.Importance]: #High },
+     { $Type : 'UI.DataField', Value: country, ![@UI.Importance]: #High }
  ],
  PresentationVariant : {SortOrder : [   
-        {   $Type      : 'Common.SortOrderType', Property   : readerID, Descending : false }
+        {   $Type      : 'Common.SortOrderType', Property   : authorID, Descending : false }
         ]},
     },
      UI        : {
         HeaderInfo : {
-            TypeName       : 'Reader',
-            TypeNamePlural : 'Readers',
+            TypeName       : 'Author',
+            TypeNamePlural : 'Authors',
             Title          : {Value : firstName},
             Description : {Value:lastName}
         },
@@ -29,15 +29,15 @@ annotate service. with @(
         }],
         FieldGroup #Description        : {Data : [
         {   $Type : 'UI.DataField', Value: image},
-        {   $Type : 'UI.DataField', Value : readerBithday },
-        {   $Type : 'UI.DataField', Value : phonenumber },
+        {   $Type : 'UI.DataField', Value : birthday },
+        {   $Type : 'UI.DataField', Value : country },
          ]},
         FieldGroup #Details        : {Data : [
-        {   $Type : 'UI.DataField', Value : readerID },   
+        {   $Type : 'UI.DataField', Value : authorID },   
         {   $Type : 'UI.DataField', Value : firstName },
         {   $Type : 'UI.DataField', Value : lastName },
-        {   $Type : 'UI.DataField', Value : readerBithday },
-        {   $Type : 'UI.DataField', Value : phonenumber }
+        {   $Type : 'UI.DataField', Value : birthday },
+        {   $Type : 'UI.DataField', Value : country }
          ]},
         FieldGroup #AdministrativeData : {Data : [
         {  $Type : 'UI.DataField',  Value : createdBy },
@@ -66,9 +66,19 @@ annotate service. with @(
             $Type  : 'UI.ReferenceFacet',
             Label  : '{i18n>admininfo}',
             Target : '@UI.FieldGroup#AdministrativeData'
-        }
-        ]
-    }
+        }]
+      },
+      {
+          $Type : 'UI.ReferenceFacet',
+          Label : '{i18n>bookInfo}',
+          Target : 'book/@UI.LineItem'
+      }
+    //   ,
+    //     {
+    //     $Type  : 'UI.ReferenceFacet',
+    //     Label  : '{i18n>bookInfo}',
+    //     Target : 'book/toAuthor/@UI.LineItem'
+    // }
     ]
   
 );

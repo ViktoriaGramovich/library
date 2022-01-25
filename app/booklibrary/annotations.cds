@@ -2,11 +2,12 @@ using LibraryService as service from '../../srv/services';
 
 annotate service.Books with @(
      UI: {
- SelectionFields: [toAuthor_authorID],
+ SelectionFields: [toAuthor_authorUUID],
  LineItem: [
      { $Type : 'UI.DataField', Value : bookID, ![@UI.Importance]: #High },
      { $Type : 'UI.DataField', Value: bookName, ![@UI.Importance]: #High },  
-     { $Type : 'UI.DataField', Value: toAuthor_authorID, ![@UI.Importance]: #High },
+     { $Type : 'UI.DataField', Value: toAuthor.firstName, ![@UI.Importance]: #High },
+     { $Type : 'UI.DataField', Value: toAuthor.lastName, ![@UI.Importance]: #High },
      { $Type : 'UI.DataField', Value: pageNumber, ![@UI.Importance]: #High },
      { $Type : 'UI.DataField', Value: copyQty, ![@UI.Importance]: #High }
  ],
@@ -16,10 +17,10 @@ annotate service.Books with @(
     },
      UI        : {
         HeaderInfo : {
-            TypeName       : 'Reader',
-            TypeNamePlural : 'Readers',
+            TypeName       : 'Book',
+            TypeNamePlural : 'Books',
             Title          : {Value : bookName},
-            Description : {Value:toAuthor_authorID}
+            Description : {Value:toAuthor.lastName}
         },
         HeaderFacets : [
         {
@@ -35,7 +36,7 @@ annotate service.Books with @(
         FieldGroup #Details        : {Data : [
         {   $Type : 'UI.DataField', Value : bookID },   
         {   $Type : 'UI.DataField', Value : bookName },
-        {   $Type : 'UI.DataField', Value : toAuthor_authorID },
+        {   $Type : 'UI.DataField', Value : toAuthor_authorUUID },
         {   $Type : 'UI.DataField', Value : pageNumber },
         {   $Type : 'UI.DataField', Value : copyQty }
          ]},

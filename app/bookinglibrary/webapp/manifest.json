@@ -1,7 +1,7 @@
 {
     "_version": "1.32.0",
     "sap.app": {
-        "id": "authors.authorslibrary",
+        "id": "booking.bookinglibrary",
         "type": "application",
         "i18n": "i18n/i18n.properties",
         "applicationVersion": {
@@ -26,12 +26,12 @@
         },
         "crossNavigation": {
             "inbounds": {
-                "authors-authorslibrary-inbound": {
+                "booking-bookinglibrary-inbound": {
                     "signature": {
                         "parameters": {},
                         "additionalParameters": "allowed"
                     },
-                    "semanticObject": "authors",
+                    "semanticObject": "booking",
                     "action": "manage",
                     "title": "{{flpTitle}}",
                     "subTitle": "{{flpSubtitle}}",
@@ -92,65 +92,42 @@
             "routes": [
                 {
                     "pattern": ":?query:",
-                    "name": "AuthorsList",
-                    "target": "AuthorsList"
+                    "name": "BookingList",
+                    "target": "BookingList"
                 },
                 {
-                    "pattern": "Authors({key}):?query:",
-                    "name": "AuthorsObjectPage",
-                    "target": "AuthorsObjectPage"
-                },
-                {
-                    "pattern": "Authors({key})/book({key2}):?query:",
-                    "name": "BooksObjectPage",
-                    "target": "BooksObjectPage"
+                    "pattern": "Booking({key}):?query:",
+                    "name": "BookingObjectPage",
+                    "target": "BookingObjectPage"
                 }
             ],
             "targets": {
-                "AuthorsList": {
+                "BookingList": {
                     "type": "Component",
-                    "id": "AuthorsList",
+                    "id": "BookingList",
                     "name": "sap.fe.templates.ListReport",
                     "options": {
                         "settings": {
-                            "entitySet": "Authors",
+                            "entitySet": "Booking",
                             "variantManagement": "Page",
                             "navigation": {
-                                "Authors": {
+                                "Booking": {
                                     "detail": {
-                                        "route": "AuthorsObjectPage"
+                                        "route": "BookingObjectPage"
                                     }
                                 }
                             }
                         }
                     }
                 },
-                "AuthorsObjectPage": {
+                "BookingObjectPage": {
                     "type": "Component",
-                    "id": "AuthorsObjectPage",
+                    "id": "BookingObjectPage",
                     "name": "sap.fe.templates.ObjectPage",
                     "options": {
                         "settings": {
                             "editableHeaderContent": false,
-                            "entitySet": "Authors",
-                            "navigation": {
-                                "book": {
-                                    "detail": {
-                                        "route": "BooksObjectPage"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "BooksObjectPage": {
-                    "type": "Component",
-                    "id": "BooksObjectPage",
-                    "name": "sap.fe.templates.ObjectPage",
-                    "options": {
-                        "settings": {
-                            "editableHeaderContent": false,
-                            "entitySet": "Books"
+                            "entitySet": "Booking"
                         }
                     }
                 }

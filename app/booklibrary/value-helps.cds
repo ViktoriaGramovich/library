@@ -6,7 +6,8 @@ toAuthor @Common.ValueList: {
 CollectionPath : 'Authors',
 Label : '',
 Parameters : [
-    { $Type: 'Common.ValueListParameterInOut', LocalDataProperty: toAuthor_authorID, ValueListProperty: 'authorID'},
+    { $Type: 'Common.ValueListParameterInOut', LocalDataProperty: toAuthor_authorUUID, ValueListProperty: 'authorUUID'},
+     { $Type: 'Common.ValueListParameterDisplayOnly', ValueListProperty: 'authorID'},
     { $Type: 'Common.ValueListParameterDisplayOnly', ValueListProperty: 'firstName'},
     { $Type: 'Common.ValueListParameterDisplayOnly', ValueListProperty: 'lastName'},
     { $Type: 'Common.ValueListParameterDisplayOnly', ValueListProperty: 'birthday'},

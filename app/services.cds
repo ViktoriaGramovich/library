@@ -10,3 +10,6 @@ using from './booklibrary/capabilities';
 
 
 using from './authorslibrary/annotations';
+using from './authorslibrary/capabilities';
+using from './authorslibrary/labels';
+using from './bookinglibrary/annotations';
