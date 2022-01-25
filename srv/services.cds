@@ -7,7 +7,9 @@ service LibraryService {
         Deletable  : true,
         Insertable : true
     }
-    entity Booking  as projection on library.Booking;
+    entity Booking  as projection on library.Booking actions{
+        action returnTheBook();
+    };
 
     @Capabilities : {
         Deletable  : true,

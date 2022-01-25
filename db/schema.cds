@@ -6,7 +6,7 @@ using {masterdata} from './master-data';
 
 entity Booking : managed {
     key bookingUUID   : UUID;
-        bookingID     : String(15);
+        bookingID     : Integer;
         readerID      : Association to Readers;
         bookID        : Association to Books;
         bookingStatus : Association to one masterdata.Statuses;
@@ -19,7 +19,7 @@ entity Booking : managed {
 
 entity Authors : managed {
     key authorUUID : UUID;
-        authorID   : String(15);
+        authorID   : Integer;
         firstName  : localized String(15);
         lastName   : localized String(15);
         birthday   : Date;
@@ -31,7 +31,7 @@ entity Authors : managed {
 entity Books : managed {
     key bookUUID   : UUID;
         toAuthor   : Association to Authors;
-        bookID     : String(15);
+        bookID     : Integer;
         bookName   : String(60);
         pageNumber : Integer;
         copyQty    : Integer;
@@ -40,7 +40,7 @@ entity Books : managed {
 
 entity Readers : managed {
     key readerUUID    : UUID;
-        readerID      : String(15);
+        readerID      : Integer;
         firstName     : localized String(15);
         lastName      : localized String(15);
         readerBithday : Date;

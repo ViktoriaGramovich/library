@@ -2,6 +2,9 @@ using LibraryService as service from '../../srv/services';
 
 annotate LibraryService.Booking with @(
     UI: {
+    Identification: [{Value: bookingStatus_ID },
+  {$Type  : 'UI.DataFieldForAction', Action : 'LibraryService.returnTheBook',   Label  : '{i18n>returnTheBook}'}
+ ],
  SelectionFields: [bookingStatus_ID, readerID_readerUUID, bookID_bookUUID, beginDate, beginTime, endDate, endTime],
  LineItem: [
      { $Type : 'UI.DataField', Value : bookingID, ![@UI.Importance]: #High },
@@ -22,7 +25,7 @@ annotate LibraryService.Booking with @(
         HeaderInfo : {
             TypeName       : 'Booking',
             TypeNamePlural : 'Bookings',
-            Title          : {Value : bookingStatus_ID},
+            Title          : {Value : bookingStatus.ID },
             Description : {Value : bookingStatus.name}
         },
         HeaderFacets : [
@@ -33,14 +36,14 @@ annotate LibraryService.Booking with @(
         }],
         FieldGroup #Description        : {Data : [
         {   $Type : 'UI.DataField', Value : image },   
-        {   $Type : 'UI.DataField', Value : beginDate },
-        {   $Type : 'UI.DataField', Value : endDate },
+        {   $Type : 'UI.DataField', Value : beginDate, Label : 'StartDate' },
+        {   $Type : 'UI.DataField', Value : endDate, Label : 'End Date' },
          ]},
         FieldGroup #Details2 : {Data : [
         {   $Type : 'UI.DataField', Value : readerID_readerUUID}
          ]},
         FieldGroup #Details3 : {Data : [
-        {   $Type : 'UI.DataField', Value : bookID.bookName }
+        {   $Type : 'UI.DataField', Value : bookID_bookUUID }
         ]},
         FieldGroup #Details1 : {Data : [
         {   $Type : 'UI.DataField', Value : bookingID },
