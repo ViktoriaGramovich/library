@@ -13,46 +13,62 @@ annotate service.Readers with @(
  PresentationVariant : {SortOrder : [   
         {   $Type      : 'Common.SortOrderType', Property   : readerID, Descending : false }
         ]},
-    }
-);
-
-annotate service.Readers with @(
-    UI.FieldGroup #GeneratedGroup1 : {
-        $Type : 'UI.FieldGroupType',
-        Data : [
-            {
-                $Type : 'UI.DataField',
-                Label : 'readerID',
-                Value : readerID,
-            },
-            {
-                $Type : 'UI.DataField',
-                Label : 'firstName',
-                Value : firstName,
-            },
-            {
-                $Type : 'UI.DataField',
-                Label : 'lastName',
-                Value : lastName,
-            },
-            {
-                $Type : 'UI.DataField',
-                Label : 'readerBithday',
-                Value : readerBithday,
-            },
-            {
-                $Type : 'UI.DataField',
-                Label : 'phonenumber',
-                Value : phonenumber,
-            },
-        ],
     },
-    UI.Facets : [
-        {
-            $Type : 'UI.ReferenceFacet',
-            ID : 'GeneratedFacet1',
-            Label : 'General Information',
-            Target : '@UI.FieldGroup#GeneratedGroup1',
+     UI        : {
+        HeaderInfo : {
+            TypeName       : 'Reader',
+            TypeNamePlural : 'Readers',
+            Title          : {Value : firstName},
+            Description : {Value:lastName}
         },
+        HeaderFacets : [
+        {
+            $Type             : 'UI.ReferenceFacet',
+            Target            : '@UI.FieldGroup#Description',
+            ![@UI.Importance] : #High
+        }],
+        FieldGroup #Description        : {Data : [
+        {   $Type : 'UI.DataField', Value: image},
+        {   $Type : 'UI.DataField', Value : readerBithday },
+        {   $Type : 'UI.DataField', Value : phonenumber },
+         ]},
+        FieldGroup #Details        : {Data : [
+        {   $Type : 'UI.DataField', Value : readerID },   
+        {   $Type : 'UI.DataField', Value : firstName },
+        {   $Type : 'UI.DataField', Value : lastName },
+        {   $Type : 'UI.DataField', Value : readerBithday },
+        {   $Type : 'UI.DataField', Value : phonenumber }
+         ]},
+        FieldGroup #AdministrativeData : {Data : [
+        {  $Type : 'UI.DataField',  Value : createdBy },
+        {  $Type : 'UI.DataField',  Value : createdAt },
+        {  $Type : 'UI.DataField',  Value : modifiedBy },
+        {  $Type : 'UI.DataField',  Value : modifiedAt }
+        ]}
+        },
+     UI.Facets : [
+    {
+        $Type  : 'UI.CollectionFacet',
+        ID     : 'PODetails',
+        Label  : '{i18n>readerInfo}',
+        Facets : [{
+            $Type  : 'UI.ReferenceFacet',
+            Label  : '{i18n>readerinfo}',
+            Target : '@UI.FieldGroup#Details'
+        }
+        ]
+    },
+      {
+        $Type  : 'UI.CollectionFacet',
+        ID     : 'POAdmininfo',
+        Label  : '{i18n>adminInfo}',
+        Facets : [{
+            $Type  : 'UI.ReferenceFacet',
+            Label  : '{i18n>admininfo}',
+            Target : '@UI.FieldGroup#AdministrativeData'
+        }
+        ]
+    }
     ]
+  
 );

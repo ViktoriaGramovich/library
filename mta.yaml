@@ -71,6 +71,10 @@ modules:
       - booklibrarybooklibrary.zip
       name: booklibrarybooklibrary
       target-path: resources/
+    - artifacts:
+      - authorsauthorslibrary.zip
+      name: authorsauthorslibrary
+      target-path: resources/
 - name: readerlibraryreaderlibrary
   type: html5
   path: app/readerlibrary
@@ -84,6 +88,16 @@ modules:
 - name: booklibrarybooklibrary
   type: html5
   path: app/booklibrary
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: authorsauthorslibrary
+  type: html5
+  path: app/authorslibrary
   build-parameters:
     build-result: dist
     builder: custom

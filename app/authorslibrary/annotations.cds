@@ -1,25 +1,25 @@
 using LibraryService as service from '../../srv/services';
 
-annotate service.Books with @(
+annotate service. with @(
      UI: {
- SelectionFields: [toAuthor_authorID],
+ SelectionFields: [readerBithday],
  LineItem: [
-     { $Type : 'UI.DataField', Value : bookID, ![@UI.Importance]: #High },
-     { $Type : 'UI.DataField', Value: bookName, ![@UI.Importance]: #High },  
-     { $Type : 'UI.DataField', Value: toAuthor_authorID, ![@UI.Importance]: #High },
-     { $Type : 'UI.DataField', Value: pageNumber, ![@UI.Importance]: #High },
-     { $Type : 'UI.DataField', Value: copyQty, ![@UI.Importance]: #High }
+     { $Type : 'UI.DataField', Value : readerID, ![@UI.Importance]: #High },
+     { $Type : 'UI.DataField', Value: firstName, ![@UI.Importance]: #High },  
+     { $Type : 'UI.DataField', Value: lastName, ![@UI.Importance]: #High },
+     { $Type : 'UI.DataField', Value: readerBithday, ![@UI.Importance]: #High },
+     { $Type : 'UI.DataField', Value: phonenumber, ![@UI.Importance]: #High }
  ],
  PresentationVariant : {SortOrder : [   
-        {   $Type      : 'Common.SortOrderType', Property   : bookID, Descending : false }
+        {   $Type      : 'Common.SortOrderType', Property   : readerID, Descending : false }
         ]},
     },
      UI        : {
         HeaderInfo : {
             TypeName       : 'Reader',
             TypeNamePlural : 'Readers',
-            Title          : {Value : bookName},
-            Description : {Value:toAuthor_authorID}
+            Title          : {Value : firstName},
+            Description : {Value:lastName}
         },
         HeaderFacets : [
         {
@@ -29,15 +29,15 @@ annotate service.Books with @(
         }],
         FieldGroup #Description        : {Data : [
         {   $Type : 'UI.DataField', Value: image},
-        {   $Type : 'UI.DataField', Value : copyQty },
-        {   $Type : 'UI.DataField', Value : pageNumber },
+        {   $Type : 'UI.DataField', Value : readerBithday },
+        {   $Type : 'UI.DataField', Value : phonenumber },
          ]},
         FieldGroup #Details        : {Data : [
-        {   $Type : 'UI.DataField', Value : bookID },   
-        {   $Type : 'UI.DataField', Value : bookName },
-        {   $Type : 'UI.DataField', Value : toAuthor_authorID },
-        {   $Type : 'UI.DataField', Value : pageNumber },
-        {   $Type : 'UI.DataField', Value : copyQty }
+        {   $Type : 'UI.DataField', Value : readerID },   
+        {   $Type : 'UI.DataField', Value : firstName },
+        {   $Type : 'UI.DataField', Value : lastName },
+        {   $Type : 'UI.DataField', Value : readerBithday },
+        {   $Type : 'UI.DataField', Value : phonenumber }
          ]},
         FieldGroup #AdministrativeData : {Data : [
         {  $Type : 'UI.DataField',  Value : createdBy },
