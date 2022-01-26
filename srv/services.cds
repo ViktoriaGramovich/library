@@ -8,6 +8,7 @@ service LibraryService {
         Insertable : true
     }
     entity Booking  as projection on library.Booking actions{
+        @Core.OperationAvailable : in.returnTheBookEnabled
         action returnTheBook();
     };
 

@@ -24,6 +24,12 @@ this.before ('NEW', 'Authors', async (req) => {
     req.data.authorID = maxID + 1;
 });
 
+this.after('READ', 'Booking', (each) => {
+    if (each.bookingStatus_ID == '2' ){
+        each.returnTheBookEnabled = true;
+    }
+})
+
 this.before ('NEW', 'Booking', async (req) => {
     const { maxID } = await SELECT.one `max(bookingID) as maxID` .from (Booking);
     req.data.bookingID = maxID + 1;

@@ -103,3 +103,20 @@ annotate LibraryService.Booking with @(
     ]
   
 );
+
+annotate service.Booking actions {
+    @(
+        Common.SideEffects : {
+            TargetEntities : [
+                _it,
+            ]
+        },
+        cds.odata.bindingparameter.name: '_it',
+        Core.OperationAvailable : _it.returnTheBookEnabled,
+        UI.FieldGroup
+    )
+    returnTheBook(
+        returnTheBook @title : 'Return The Book'
+    );
+}
+

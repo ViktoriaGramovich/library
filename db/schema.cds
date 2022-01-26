@@ -15,6 +15,7 @@ entity Booking : managed {
         endDate       : Date;
         endTime       : Time;
         image : LargeBinary @Core.MediaType : 'image/png';
+        virtual returnTheBookEnabled : Boolean;
 }
 
 entity Authors : managed {
