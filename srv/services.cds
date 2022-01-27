@@ -3,11 +3,31 @@ using masterdata as masterdata from '../db/master-data';
 
 service LibraryService {
     @odata.draft.enabled
-    @Capabilities : {
+    @(
+    Capabilities : {
         Deletable  : true,
         Insertable : true
-    }
-    entity Booking  as projection on library.Booking actions{
+    },
+    Capabilities.FilterRestrictions : {FilterExpressionRestrictions : [{
+            Property           : 'beginDate',
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property           : 'endDate',
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property           : 'beginTime',
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property           : 'endTime',
+            AllowedExpressions : 'SingleValue'
+        }
+        ]
+        }
+    )
+    entity Booking  as projection on library.Booking actions {
         @Core.OperationAvailable : in.returnTheBookEnabled
         action returnTheBook();
     };
@@ -18,10 +38,16 @@ service LibraryService {
     }
     entity Books    as projection on library.Books;
 
-    @Capabilities : {
-        Deletable  : true,
-        Insertable : true
-    }
+    @(
+        Capabilities                    : {
+            Deletable  : true,
+            Insertable : true
+        },
+        Capabilities.FilterRestrictions : {FilterExpressionRestrictions : [{
+            Property           : 'readerBithday',
+            AllowedExpressions : 'SingleValue'
+        }]}
+    )
     entity Readers  as projection on library.Readers;
 
     @Capabilities : {

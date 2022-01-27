@@ -66,7 +66,7 @@ annotate LibraryService.Booking with @(
     {
         $Type  : 'UI.CollectionFacet',
         ID     : 'PODetails',
-        Label  : '{i18n>productInfo}',
+        Label  : '{i18n>bookinginfo}',
         Facets : [{
             $Type  : 'UI.ReferenceFacet',
             Label  : '{i18n>bookingInfo}',

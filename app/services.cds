@@ -15,6 +15,7 @@ using from './authorslibrary/annotations';
 using from './authorslibrary/capabilities';
 using from './authorslibrary/labels';
 using from './authorslibrary/field-control';
+using from './authorslibrary/value-helps';
 
 using from './bookinglibrary/annotations';
 using from './bookinglibrary/labels';
